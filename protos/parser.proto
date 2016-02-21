@@ -1,0 +1,28 @@
+// We're using proto3 syntax
+syntax = "proto3";
+
+package twittertext;
+
+// This is the service for our API
+service TwitterText {
+  // This is where we define the methods in this service
+
+  // We have a method called `Parse` which takes
+  // parameter called `TweetRequest` and returns
+  // the message `ParsedResponse`
+  rpc Parse(TweetRequest) returns (ParsedResponse) {}
+}
+
+// The request message has the tweet text to be parsed
+message TweetRequest {
+  // The field `text` is of type `string`
+  string text = 1;
+}
+
+// The request message has the tweet text to be parsed
+message ParsedResponse {
+  // `repeated` is used for a list
+  repeated string users = 1;
+  repeated string tags = 2;
+  repeated string urls = 3;
+}
